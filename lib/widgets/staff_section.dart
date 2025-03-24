@@ -16,7 +16,11 @@ class StaffSection extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           decoration: BoxDecoration(
             color: AppColors.panelBackground,
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(25),
+            border: Border.all(
+              color: Colors.white, // تحديد اللون الأبيض للحواف
+              width: .6, // سمك الحواف
+            ),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

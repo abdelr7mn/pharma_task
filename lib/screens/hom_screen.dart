@@ -18,7 +18,7 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
-            Container(height: 450, child: PatientStatusPage()),
+            Container(height: 358, child: PatientStatusPage()),
             PatientSection(
               onTap: () => _showCustomScreenDialog(context, 'patients'),
             ),

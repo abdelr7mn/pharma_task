@@ -17,9 +17,12 @@ class StaffCardWidget extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         return Container(
+          height: 50,
+          width: 150,
           decoration: BoxDecoration(
             color: Colors.white.withOpacity(0.1),
             borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: Colors.white, width: 1),
           ),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -27,7 +30,6 @@ class StaffCardWidget extends StatelessWidget {
               mainAxisSize: MainAxisSize.min, // استخدام أقل مساحة ممكنة
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Top row with patient info
                 Padding(
                   padding: const EdgeInsets.only(left: 8, right: 4, top: 6),
                   child: Row(
@@ -43,7 +45,7 @@ class StaffCardWidget extends StatelessWidget {
                         ),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(6),
-                          child: Image.network(
+                          child: Image.asset(
                             patient.profileImage,
                             fit: BoxFit.cover,
                             errorBuilder: (context, error, stackTrace) {
@@ -75,9 +77,11 @@ class StaffCardWidget extends StatelessWidget {
                                     fontSize: 20,
                                   ),
                                 ),
-                                const SizedBox(width: 8), // مسافة بين الاسم والأيقونة
+                                const SizedBox(
+                                  width: 8,
+                                ), // مسافة بين الاسم والأيقونة
                                 Icon(
-                                  Icons.circle,
+                                  Icons.local_activity,
                                   color: isActive ? Colors.green : Colors.red,
                                   size: 12,
                                 ),
@@ -87,19 +91,53 @@ class StaffCardWidget extends StatelessWidget {
                         ),
                       ),
 
-                      // More Button - smaller
-                      SizedBox(
-                        width: 15,
-                        height: 20,
-                        child: IconButton(
-                          icon: const Icon(
+                      PopupMenuButton<String>(
+                        color: const Color(
+                          0xFF1E5A5E,
+                        ), // لون الخلفية الداكنة مثل الصورة
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                            10,
+                          ), // زوايا مستديرة
+                        ),
+                        onSelected: (value) {
+                          if (value == 'delete') {
+                            // تنفيذ حذف العنصر
+                          } else if (value == 'edit') {
+                            // تنفيذ تعديل العنصر
+                          }
+                        },
+                        itemBuilder:
+                            (context) => [
+                              PopupMenuItem(
+                                value: 'delete',
+                                child: Text(
+                                  'Delete',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 18,
+                                  ),
+                                ),
+                              ),
+                              PopupMenuItem(
+                                value: 'edit',
+                                child: Text(
+                                  'Edit',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 18,
+                                  ),
+                                ),
+                              ),
+                            ],
+                        child: SizedBox(
+                          width: 15,
+                          height: 20,
+                          child: Icon(
                             Icons.more_vert,
                             color: Colors.white,
                             size: 16,
                           ),
-                          padding: EdgeInsets.zero,
-                          constraints: const BoxConstraints(),
-                          onPressed: () {},
                         ),
                       ),
                     ],
@@ -112,7 +150,7 @@ class StaffCardWidget extends StatelessWidget {
                   child: GestureDetector(
                     onTap: () {
                       showModalBottomSheet(
-                        shape: const RoundedRectangleBorder(
+                        shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(30),
                             topRight: Radius.circular(30),

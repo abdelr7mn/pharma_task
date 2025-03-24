@@ -43,16 +43,34 @@ class _PatientsScreenState extends State<PatientsScreen> {
         ),
         child: Column(
           children: [
-            const Text(
-              'My Patients',
-              style: TextStyle(
-                color: AppColors.lightText,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+            Row(
+              children: [
+                const Expanded(
+                  child: Divider(
+                    color: Colors.white, // لون الخط
+                    thickness: 2, // سمك الخط
+                    endIndent: 8, // مسافة بعد الخط
+                  ),
+                ),
+                const Text(
+                  'My Patients',
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                const Expanded(
+                  child: Divider(
+                    color: Colors.white,
+                    thickness: 2,
+                    indent: 8, // مسافة قبل الخط
+                  ),
+                ),
+              ],
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(left: 18, right: 18),
               child: TextField(
                 decoration: InputDecoration(
                   filled: true,
@@ -60,7 +78,7 @@ class _PatientsScreenState extends State<PatientsScreen> {
                   hintText: 'Search',
                   prefixIcon: const Icon(Icons.search),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
+                    borderRadius: BorderRadius.circular(10),
                     borderSide: BorderSide.none,
                   ),
                 ),
@@ -71,9 +89,10 @@ class _PatientsScreenState extends State<PatientsScreen> {
               child: GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 1, // عرض عنصر واحد في كل صف
-                  crossAxisSpacing: 5, // المسافة الأفقية بين العناصر
-                  mainAxisSpacing: 5, // المسافة الرأسية بين الصفوف
-                  childAspectRatio: itemAspectRatio, // نسبة العرض للارتفاع (149/47)
+                  crossAxisSpacing: 10, // المسافة الأفقية بين العناصر
+                  mainAxisSpacing: 10, // المسافة الرأسية بين الصفوف
+                  childAspectRatio:
+                      itemAspectRatio, // نسبة العرض للارتفاع (149/47)
                 ),
                 itemCount: patients.length,
                 itemBuilder: (context, index) {
@@ -89,7 +108,7 @@ class _PatientsScreenState extends State<PatientsScreen> {
           showModalBottomSheet(
             context: context,
             builder: (context) {
-              return  AddPatientScreen(); // إضافة return هنا
+              return AddPatientScreen(); // إضافة return هنا
             },
           );
         },

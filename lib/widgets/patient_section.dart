@@ -17,6 +17,10 @@ class PatientSection extends StatelessWidget {
           decoration: BoxDecoration(
             color: AppColors.panelBackground,
             borderRadius: BorderRadius.circular(15),
+            border: Border.all(
+              color: Colors.white, // تحديد اللون الأبيض للحواف
+              width: .6, // سمك الحواف
+            ),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

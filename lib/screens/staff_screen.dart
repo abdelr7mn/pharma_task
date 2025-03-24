@@ -5,6 +5,7 @@ import '../widgets/header_widget.dart';
 import '../widgets/patient_card_widget.dart';
 import 'package:pharma/widgets/staff_card.widget.dart';
 import 'package:pharma/screens/add_patient_screen.dart';
+
 class StaffScreen extends StatefulWidget {
   const StaffScreen({Key? key}) : super(key: key);
 
@@ -39,18 +40,31 @@ class _StaffScreenState extends State<StaffScreen> {
         margin: const EdgeInsets.all(16),
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-
           borderRadius: BorderRadius.circular(_isExpanded ? 16 : 0),
         ),
         child: Column(
           children: [
-            const Text(
-              'My Staff',
-              style: TextStyle(
-                color: AppColors.lightText,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+            Row(
+              children: [
+                const Expanded(
+                  child: Divider(
+                    color: Colors.white,
+                    thickness: 2,
+                    endIndent: 8,
+                  ),
+                ),
+                const Text(
+                  'My Staff',
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                const Expanded(
+                  child: Divider(color: Colors.white, thickness: 2, indent: 8),
+                ),
+              ],
             ),
 
             Padding(
@@ -62,7 +76,7 @@ class _StaffScreenState extends State<StaffScreen> {
                   hintText: 'Search',
                   prefixIcon: const Icon(Icons.search),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
+                    borderRadius: BorderRadius.circular(10),
                     borderSide: BorderSide.none,
                   ),
                 ),
@@ -76,7 +90,7 @@ class _StaffScreenState extends State<StaffScreen> {
                   crossAxisSpacing: 5, // المسافة الأفقية بين العناصر
                   mainAxisSpacing: 5, // المسافة الرأسية بين الصفوف
                   childAspectRatio:
-                  itemAspectRatio, // نسبة العرض للارتفاع (149/47)
+                      itemAspectRatio, // نسبة العرض للارتفاع (149/47)
                 ),
                 itemCount: patients.length,
                 itemBuilder: (context, index) {
@@ -97,7 +111,7 @@ class _StaffScreenState extends State<StaffScreen> {
           showModalBottomSheet(
             context: context,
             builder: (context) {
-              return  AddPatientScreen(); // إضافة return هنا
+              return AddPatientScreen(); // إضافة return هنا
             },
           );
         },

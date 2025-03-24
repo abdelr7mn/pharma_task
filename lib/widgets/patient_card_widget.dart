@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../resources/app_colors.dart';
 import '../models/patient.dart';
-import 'package:pharma/screens/add_report.dart'; // تم تصحيح الاستيراد
+import 'package:pharma/screens/add_report.dart';
 
 class PatientCardWidget extends StatelessWidget {
   final Patient patient;
@@ -13,23 +13,24 @@ class PatientCardWidget extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         return Container(
+          height: 60,
+          width: 150,
           decoration: BoxDecoration(
             color: Colors.white.withOpacity(0.1),
             borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: Colors.white, width: .6),
           ),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
-              mainAxisSize: MainAxisSize.min, // Use minimum space needed
+              mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Top row with patient info
                 Padding(
                   padding: const EdgeInsets.only(left: 8, right: 4, top: 6),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Profile Image - smaller size
                       Container(
                         width: 30,
                         height: 30,
@@ -39,7 +40,7 @@ class PatientCardWidget extends StatelessWidget {
                         ),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(6),
-                          child: Image.network(
+                          child: Image.asset(
                             patient.profileImage,
                             fit: BoxFit.cover,
                             errorBuilder: (context, error, stackTrace) {
@@ -55,7 +56,6 @@ class PatientCardWidget extends StatelessWidget {
 
                       const SizedBox(width: 8),
 
-                      // Patient Info
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -70,8 +70,6 @@ class PatientCardWidget extends StatelessWidget {
                               ),
                               overflow: TextOverflow.ellipsis,
                             ),
-
-                            // Use a more compact format for the details
                             Text(
                               'ID: 20254831 • Location: Assut • Age: 23',
                               style: const TextStyle(
@@ -84,41 +82,73 @@ class PatientCardWidget extends StatelessWidget {
                         ),
                       ),
 
-                      // More Button - smaller
-                      SizedBox(
-                        width: 15,
-                        height: 20,
-                        child: IconButton(
-                          icon: const Icon(
+                      // زر القائمة المنبثقة
+                      PopupMenuButton<String>(
+                        color: const Color(
+                          0xFF1E5A5E,
+                        ), // لون الخلفية الداكنة مثل الصورة
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                            10,
+                          ), // زوايا مستديرة
+                        ),
+                        onSelected: (value) {
+                          if (value == 'delete') {
+                            // تنفيذ حذف العنصر
+                          } else if (value == 'edit') {
+                            // تنفيذ تعديل العنصر
+                          }
+                        },
+                        itemBuilder:
+                            (context) => [
+                              PopupMenuItem(
+                                value: 'delete',
+                                child: Text(
+                                  'Delete',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 18,
+                                  ),
+                                ),
+                              ),
+                              PopupMenuItem(
+                                value: 'edit',
+                                child: Text(
+                                  'Edit',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 18,
+                                  ),
+                                ),
+                              ),
+                            ],
+                        child: SizedBox(
+                          width: 15,
+                          height: 20,
+                          child: Icon(
                             Icons.more_vert,
                             color: Colors.white,
                             size: 16,
                           ),
-                          padding: EdgeInsets.zero,
-                          constraints: const BoxConstraints(),
-                          onPressed: () {},
                         ),
                       ),
                     ],
                   ),
                 ),
 
-                const SizedBox(height: 2),
-
-                // Action Buttons Row - more compact
+                // الأزرار السفلية
                 Padding(
                   padding: const EdgeInsets.only(left: 8, right: 8, bottom: 6),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      // Check Profile Button - fixed width instead of Expanded
                       Container(
                         height: 18,
                         width: constraints.maxWidth * 0.35,
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
                           color: const Color(0xff2C6768),
-                          borderRadius: BorderRadius.circular(9),
+                          borderRadius: BorderRadius.circular(2),
                         ),
                         child: const Text(
                           'Check Profile',
@@ -130,19 +160,17 @@ class PatientCardWidget extends StatelessWidget {
                         ),
                       ),
 
-                      // Add Report Button - fixed width
                       GestureDetector(
                         onTap: () {
                           showModalBottomSheet(
                             shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(30), // زاوية علوية يسرى مدورة
-                                topRight: Radius.circular(30),// زاوية علوية يمينية مدورة
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(3),
                               ),
                             ),
                             context: context,
                             builder: (context) {
-                              return const AddReport(); // إضافة return هنا
+                              return const AddReport();
                             },
                           );
                         },
@@ -152,7 +180,7 @@ class PatientCardWidget extends StatelessWidget {
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
                             color: const Color(0xff2C6768),
-                            borderRadius: BorderRadius.circular(9),
+                            borderRadius: BorderRadius.circular(2),
                           ),
                           child: const Text(
                             'Add Report',
@@ -165,7 +193,6 @@ class PatientCardWidget extends StatelessWidget {
                         ),
                       ),
 
-                      // Saved Button (Circle) - smaller
                       Container(
                         width: 18,
                         height: 18,
@@ -175,7 +202,7 @@ class PatientCardWidget extends StatelessWidget {
                         ),
                         child: const Center(
                           child: Text(
-                            'Saved',
+                            'Good',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 6,
