@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:pharma/resources/app_colors.dart';
 
-class AddReport extends StatelessWidget {
-  const AddReport({super.key});
+import '../resources/app_colors.dart';
+
+class AddStaffScreen extends StatefulWidget {
+  const AddStaffScreen({Key? key}) : super(key: key);
+
+  @override
+  _AddPatientScreenState createState() => _AddPatientScreenState();
+}
+
+class _AddPatientScreenState extends State<AddStaffScreen> {
+  bool _isExpanded = false; // تعريف المتغير هنا
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff2C999B),
+      backgroundColor: Color(0xff2C999B),
       body: Column(
         children: [
           Expanded(
@@ -17,7 +25,7 @@ class AddReport extends StatelessWidget {
               margin: const EdgeInsets.all(16),
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: const Color(0xff2C999B),
+                color: Color(0xff2C999B),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Column(
@@ -27,7 +35,7 @@ class AddReport extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text(
-                        'Add New Report',
+                        'Add New Staff',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
@@ -44,7 +52,24 @@ class AddReport extends StatelessWidget {
                   ),
                   const SizedBox(height: 30),
                   const Text(
-                    'Report:',
+                    'Name',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  TextField(
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide: const BorderSide(color: Colors.grey),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  const Text(
+                    'ID',
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
@@ -95,7 +120,7 @@ class AddReport extends StatelessWidget {
                                   ),
                                   const SizedBox(height: 10),
                                   const Text(
-                                    'You have successfully added new Report',
+                                    'You have successfully added new Staff',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       color: Colors.black54,
@@ -144,7 +169,7 @@ class AddReport extends StatelessWidget {
                         ),
                       ),
                       child: const Text(
-                        'Add Report',
+                        'Add Staff',
                         style: TextStyle(
                           color: Color(0xff2C999B),
                           fontSize: 16,

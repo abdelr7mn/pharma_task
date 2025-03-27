@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../resources/app_colors.dart';
 
 class AddPatientScreen extends StatefulWidget {
@@ -35,7 +34,7 @@ class _AddPatientScreenState extends State<AddPatientScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text(
-                        'Add New Member',
+                        'Add New patient',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
@@ -88,11 +87,77 @@ class _AddPatientScreenState extends State<AddPatientScreen> {
                   Center(
                     child: ElevatedButton(
                       onPressed: () {
-                        // إضافة المريض ثم العودة
+                        // إغلاق الـ BottomSheet أولاً
                         Navigator.pop(context);
+                        // إظهار Dialog مخصص
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              backgroundColor:
+                                  Colors.white, // لون خلفية الـ Dialog
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              content: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  const Icon(
+                                    Icons.check_circle,
+                                    color: Colors.green,
+                                    size: 60,
+                                  ),
+                                  const SizedBox(height: 20),
+                                  const Text(
+                                    'Success',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 10),
+                                  const Text(
+                                    'You have successfully added new Patient',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      color: Colors.black54,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 20),
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.pop(
+                                        context,
+                                      ); // إغلاق الـ Dialog
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: AppColors.primary,
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 40,
+                                        vertical: 12,
+                                      ),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(30),
+                                      ),
+                                    ),
+                                    child: const Text(
+                                      'Done',
+                                      style: TextStyle(
+                                        color: AppColors.lightText,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                        );
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.primary,
+                        backgroundColor: Colors.white,
                         padding: const EdgeInsets.symmetric(
                           horizontal: 40,
                           vertical: 12,
@@ -102,9 +167,9 @@ class _AddPatientScreenState extends State<AddPatientScreen> {
                         ),
                       ),
                       child: const Text(
-                        'Add Staff',
+                        'Add Patient',
                         style: TextStyle(
-                          color: AppColors.lightText,
+                          color: Color(0xff2C999B),
                           fontSize: 16,
                         ),
                       ),

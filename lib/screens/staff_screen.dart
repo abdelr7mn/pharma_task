@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pharma/screens/add_staff_screen.dart';
 import '../resources/app_colors.dart';
 import '../models/patient.dart';
 import '../widgets/header_widget.dart';
@@ -111,7 +112,7 @@ class _StaffScreenState extends State<StaffScreen> {
           showModalBottomSheet(
             context: context,
             builder: (context) {
-              return AddPatientScreen(); // إضافة return هنا
+              return AddStaffScreen(); // إضافة return هنا
             },
           );
         },

@@ -87,6 +87,13 @@ class StaffCardWidget extends StatelessWidget {
                                 ),
                               ],
                             ),
+                            Text(
+                              'ID: 20254831',
+                              style: const TextStyle(
+                                color: Colors.white70,
+                                fontSize: 8,
+                              ),
+                            ),
                           ],
                         ),
                       ),
