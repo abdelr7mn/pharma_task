@@ -50,7 +50,7 @@ class _AddPatientScreenState extends State<AddStaffScreen> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 10),
                   const Text(
                     'Name',
                     style: TextStyle(

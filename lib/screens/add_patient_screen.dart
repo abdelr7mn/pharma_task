@@ -19,13 +19,11 @@ class _AddPatientScreenState extends State<AddPatientScreen> {
         children: [
           Expanded(
             child: Container(
-              height: 300,
-              width: double.infinity,
               margin: const EdgeInsets.all(16),
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 color: Color(0xff2C999B),
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(53),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,7 +47,7 @@ class _AddPatientScreenState extends State<AddPatientScreen> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 10),
                   const Text(
                     'Name',
                     style: TextStyle(

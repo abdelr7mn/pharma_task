@@ -21,7 +21,7 @@ class StaffCardWidget extends StatelessWidget {
           width: 150,
           decoration: BoxDecoration(
             color: Colors.white.withOpacity(0.1),
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(3),
             border: Border.all(color: Colors.white, width: 1),
           ),
           child: Padding(
@@ -37,10 +37,10 @@ class StaffCardWidget extends StatelessWidget {
                     children: [
                       // Profile Image - smaller size
                       Container(
-                        width: 30,
-                        height: 30,
+                        width: 37,
+                        height: 37,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(6),
+                          borderRadius: BorderRadius.circular(3),
                           border: Border.all(color: Colors.white, width: 1),
                         ),
                         child: ClipRRect(
@@ -154,22 +154,7 @@ class StaffCardWidget extends StatelessWidget {
                 // Action Buttons Row - more compact
                 Padding(
                   padding: const EdgeInsets.only(left: 8, right: 8, bottom: 6),
-                  child: GestureDetector(
-                    onTap: () {
-                      showModalBottomSheet(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(30),
-                            topRight: Radius.circular(30),
-                          ),
-                        ),
-                        context: context,
-                        builder: (context) {
-                          return const AddReport(); // إضافة return هنا
-                        },
-                      );
-                    },
-                  ),
+                  child: GestureDetector(onTap: () {}),
                 ),
               ],
             ),

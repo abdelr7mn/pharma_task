@@ -32,10 +32,10 @@ class PatientCardWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        width: 30,
-                        height: 30,
+                        width: 37,
+                        height: 37,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(6),
+                          borderRadius: BorderRadius.circular(3),
                           border: Border.all(color: Colors.white, width: 1),
                         ),
                         child: ClipRRect(
@@ -163,14 +163,28 @@ class PatientCardWidget extends StatelessWidget {
                       GestureDetector(
                         onTap: () {
                           showModalBottomSheet(
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(3),
-                              ),
-                            ),
                             context: context,
+
+                            backgroundColor:
+                                Colors.transparent, // يجعل الخلفية شفافة
                             builder: (context) {
-                              return const AddReport();
+                              return Center(
+                                child: Container(
+                                  width:
+                                      MediaQuery.of(context).size.width *
+                                      0.9, // يجعل العرض 90% من الشاشة
+                                  padding: const EdgeInsets.all(16),
+                                  decoration: BoxDecoration(
+                                    color: Color(0xff2C999B), // لون الخلفية
+                                    borderRadius: BorderRadius.circular(25),
+                                    border: Border.all(
+                                      color: Colors.white,
+                                      width: 1,
+                                    ), // يجعل الحواف دائرية
+                                  ),
+                                  child: AddReport(),
+                                ),
+                              );
                             },
                           );
                         },

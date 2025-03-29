@@ -107,8 +107,26 @@ class _PatientsScreenState extends State<PatientsScreen> {
         onPressed: () {
           showModalBottomSheet(
             context: context,
+
+            backgroundColor: Colors.transparent, // يجعل الخلفية شفافة
             builder: (context) {
-              return AddPatientScreen(); // إضافة return هنا
+              return Center(
+                child: Container(
+                  width:
+                      MediaQuery.of(context).size.width *
+                      0.9, // يجعل العرض 90% من الشاشة
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: Color(0xff2C999B), // لون الخلفية
+                    borderRadius: BorderRadius.circular(25),
+                    border: Border.all(
+                      color: Colors.white,
+                      width: 1,
+                    ), // يجعل الحواف دائرية
+                  ),
+                  child: AddPatientScreen(),
+                ),
+              );
             },
           );
         },
